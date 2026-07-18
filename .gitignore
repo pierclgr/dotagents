@@ -1,0 +1,7 @@
+# Ignore macos stuff
+.DS_store
+.serena
+
+# Ignore python stuff
+__pycache__/
+.venv/

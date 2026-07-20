@@ -7,6 +7,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 AGENTS_DIR="${HOME}/.agents"
 
 # 1. Copy AGENTS.md, CONVENTIONS.md and skills/ into ~/.agents
+rm -rf "${AGENTS_DIR}"
 mkdir -p "${AGENTS_DIR}"
 cp "${SCRIPT_DIR}/AGENTS.md" "${AGENTS_DIR}/AGENTS.md"
 cp "${SCRIPT_DIR}/CONVENTIONS.md" "${AGENTS_DIR}/CONVENTIONS.md"
@@ -29,7 +30,14 @@ for entry in "${TARGETS[@]}"; do
 
   mkdir -p "${target_path}"
   ln -sfn "${AGENTS_DIR}/AGENTS.md" "${target_path}/${link_name}"
-  ln -sfn "${AGENTS_DIR}/skills" "${target_path}/skills"
+
+  skills_path="${target_path}/skills"
+  # ln -sfn nests the symlink inside an existing real directory instead of
+  # replacing it, so remove it first
+  if [ -d "${skills_path}" ]; then
+    rm -rf "${skills_path}"
+  fi
+  ln -sfn "${AGENTS_DIR}/skills" "${skills_path}"
 done
 
 echo "Setup complete."

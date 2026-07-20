@@ -6,12 +6,12 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 AGENTS_DIR="${HOME}/.agents"
 
-# 1. Copy AGENTS.md, CONVENTIONS.md and skills/ into ~/.agents
+# 1. Link AGENTS.md, CONVENTIONS.md and skills/ into ~/.agents
 rm -rf "${AGENTS_DIR}"
 mkdir -p "${AGENTS_DIR}"
-cp "${SCRIPT_DIR}/AGENTS.md" "${AGENTS_DIR}/AGENTS.md"
-cp "${SCRIPT_DIR}/CONVENTIONS.md" "${AGENTS_DIR}/CONVENTIONS.md"
-cp -r "${SCRIPT_DIR}/skills" "${AGENTS_DIR}/skills"
+ln -sfn "${SCRIPT_DIR}/AGENTS.md" "${AGENTS_DIR}/AGENTS.md"
+ln -sfn "${SCRIPT_DIR}/CONVENTIONS.md" "${AGENTS_DIR}/CONVENTIONS.md"
+ln -sfn "${SCRIPT_DIR}/skills" "${AGENTS_DIR}/skills"
 
 # 2. Link ~/.agents into each tool's config directory.
 # Each entry is "target_dir:link_name_for_AGENTS.md"

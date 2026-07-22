@@ -5,6 +5,8 @@
 ## 1. Python preferences
 - Docstring style: Google
 - Coding convention: PEP8
+- Type hints: required everywhere (variables, arguments, parameters, fields,
+  returns, etc.) (PEP 484)
 
 ## 2. File naming
 - Default (when nothing specified): `snake_case.extension`
@@ -16,17 +18,17 @@
 - `tests/`: all test files
 
 ## 4. Code comments
-Starting letter *lowercase*, no ending period.
+- starting letter *lowercase*, no ending period
 
-## 5. Git
+## 5. Markdown
+- each line has *max* 80 chars
+- do *not* line break commands in code blocks
+
+## 6. Git
 ### Branches
 - `feature/snake_case`: for *feature*
 - `fix/snake_case`: for *bug fixing*
 - `model/model_name`: for *new AI models*
-
-## 6. Markdown
-- each line has *max* 80 chars
-- do *not* line break commands in code blocks
 
 ### Commits
 #### Message
@@ -48,7 +50,7 @@ Structure the description in the following sections, each titled with a proper m
 - **Tests**: list of modifications made to tests
 - **Documentation**: list of modifications made to the documentation
 
-General rules:
+## 7. General rules:
 - No test plan
 - No mention to coding agents (CLAUDE, CODEX, OPENCODE etc.)
 - `CLAUDE.md` could be just a link to `AGENTS.md`; if so only edit `AGENTS.md`

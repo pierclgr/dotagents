@@ -84,7 +84,7 @@ When making code changes, make sure to **keep documentation up-to-date**:
 - Update existing comments, if any
 - Update repo's documentation files, if any
 - Update repo's `CLAUDE.md` and `AGENTS.md` files
-- Only comment complex code slices
+- Only comment complex code slices, keep comments minimal and simple
 
 ## 2. CLAUDE.md/AGENTS.md
 When creating or updating project's `CLAUDE.md`/`AGENTS.md` file, add a *convention* section with code, docstring and other conventions if it doesn't exist:

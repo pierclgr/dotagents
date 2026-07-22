@@ -51,6 +51,5 @@ Structure the description in the following sections, each titled with a proper m
 - **Documentation**: list of modifications made to the documentation
 
 ## 7. General rules:
-- No test plan
 - No mention to coding agents (CLAUDE, CODEX, OPENCODE etc.)
 - `CLAUDE.md` could be just a link to `AGENTS.md`; if so only edit `AGENTS.md`

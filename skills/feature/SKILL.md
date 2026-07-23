@@ -51,9 +51,13 @@ stopping for the genuine blockers listed in "When to stop" below.
 ## 1. Deep repo scan
 
 Understand where this feature sits before touching anything. Map the
-project's structure, identify the modules/layers the feature will touch,
-and find existing patterns to mirror (how similar features are structured,
-tested, and documented elsewhere in the codebase).
+project's structure and architecture, identify the modules/layers the
+feature will touch, and find existing patterns to mirror (how similar
+features are structured, tested, and documented elsewhere in the
+codebase). Also note the project's code standards and conventions — a
+`CONVENTIONS.md`/`AGENTS.md` convention section, linter/formatter config,
+or just the prevailing style in the code — so every sub-feature you build
+adheres to them.
 
 If the description leaves real ambiguity — multiple reasonable
 interpretations of scope, behavior, or where it belongs — stop and ask now.
@@ -116,7 +120,8 @@ purpose.
 
 For each sub-feature, in the order planned:
 
-1. Implement it, matching the style and patterns found in step 1.
+1. Implement it adhering to the repository's code standards, architecture,
+   and conventions, matching the style and patterns found in step 1.
 2. Add or update tests that exercise it, and keep documentation (docstrings,
    comments, README/docs, the project's `AGENTS.md` convention sections)
    up to date with what changed.

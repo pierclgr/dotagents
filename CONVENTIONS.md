@@ -1,6 +1,5 @@
-# Code, naming and documentation conventions
-
-**PREMISE**: the following are **user preferences**, to use when no other standard is already in use and with new projects. **Always** use project's `CLAUDE.md`, `AGENTS.md` and project conventions if present.
+# CONVENTIONS.md
+**PREMISE**: the following are **user conventions**, to use with new projects and when no other conventions are expressed. **Always** use project's `CLAUDE.md`, `AGENTS.md` and project conventions if present.
 
 ## 1. Python preferences
 - Docstring style: Google

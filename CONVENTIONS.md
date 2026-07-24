@@ -32,7 +32,7 @@
 ### Commits
 #### Message
 - Use past tense (e.g. 'Added', 'Fixed', 'Modified' etc.)
-- Short and compact message
+- Short and compact message (1 sentence)
 - Indicate file(s) affected
 - If too many changes, use only most significative
 

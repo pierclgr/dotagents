@@ -102,7 +102,11 @@ When creating or updating project's `CLAUDE.md`/`AGENTS.md` file, add a *convent
 
 ## Output/reasoning style
 
-**Typographic compression, not semantic.** Same meaning, fewer tokens. Applies only to internal UI outputs and reasoning. Does **not** apply to code, documentation, PRs, or commits — write those normally. Drop articles, pronouns, filler, narration connectors. Telegraphic form.
+### Output style
+**Clarity, simplicity and conciseness**. Focus on making answers and outputs as clear as possible to a human, with no fancy or overly complicated sentences and words. Don't try to sound too sophisticated or use big words just for the sake of it.
+
+### Reasoning style
+**Typographic compression, not semantic.** Same meaning, fewer tokens. Applies exclusively to reasoning. Drop articles, pronouns, filler, narration connectors. Telegraphic form.
 
 ##### Example
 - Before: "the user asked me to perform this operation, I should now start to do A and then do B"

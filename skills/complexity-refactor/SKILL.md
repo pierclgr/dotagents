@@ -6,7 +6,7 @@ description: >-
   objects, tight coupling, duplication, deep nesting, SOLID violations),
   then autonomously refactor the highest-leverage offenders — as pure,
   behavior-preserving changes verified end to end by the existing test
-  suite, committing each step separately. Use this whenever the user says
+  suite, committing each step separately. Use when users say
   a codebase/file/function is "too complex", "a mess", "hard to
   maintain", "bloated", or "growing out of control", asks to "reduce
   complexity", "simplify the architecture", "clean up technical debt",

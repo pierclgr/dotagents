@@ -20,7 +20,7 @@
 - starting letter *lowercase*, no ending period
 
 ## 5. Markdown
-- each line has *max* 80 chars
+- each line has *max* 80 chars (except PR descriptions, see §6)
 - do *not* line break commands in code blocks
 
 ## 6. Git
@@ -48,6 +48,8 @@ Structure the description in the following sections, each titled with a proper m
 - **Code**: list of modifications made to the code
 - **Tests**: list of modifications made to tests
 - **Documentation**: list of modifications made to the documentation
+
+Do *not* wrap lines at a column limit: write each paragraph and each bullet on a single line, full length.
 
 ## 7. General rules:
 - No mention to coding agents (CLAUDE, CODEX, OPENCODE etc.)

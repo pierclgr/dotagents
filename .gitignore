@@ -1,5 +1,5 @@
 # Ignore macos stuff
-.DS_store
+.DS_Store
 .serena
 
 # Ignore python stuff

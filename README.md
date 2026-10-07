@@ -7,6 +7,10 @@ tools), shared across projects.
 
 - `AGENTS.md` — general, development, and documentation preferences.
 - `CONVENTIONS.md` — code, naming, git, and PR conventions for new projects.
+- `skills/assisted-code-review/` — skill to review a PR, a branch or
+  uncommitted changes with the agent's help, one file at a time, bottom-up
+  (files without internal imports first). Tests:
+  `python3 -m unittest discover -s skills/assisted-code-review/tests`.
 - `skills/deep-criticality-analysis/` — skill to run a whole-repo criticality
   analysis (bugs, code smells, risks, test-suite gaps).
 - `skills/open-pr/` — skill to open a GitHub PR from the current branch,

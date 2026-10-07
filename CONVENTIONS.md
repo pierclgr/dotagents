@@ -29,6 +29,10 @@
 - `fix/snake_case`: for *bug fixing*
 - `model/model_name`: for *new AI models*
 
+### Worktrees
+- When working with branches, use git worktrees
+- Store worktrees under `<cwd>/.worktrees/`
+
 ### Commits
 #### Message
 - Use past tense (e.g. 'Added', 'Fixed', 'Modified' etc.)

@@ -5,7 +5,7 @@ description: >-
   changes, one file at a time, bottom-up: files with no internal imports first,
   then the files that use them. First shows a table of all added, modified and
   deleted files in review order, with a summary of each. Then presents each
-  file with its diff and possible issues, answers the user's questions, and
+  file with a summary and possible issues, answers the user's questions, and
   moves to the next file when the user says so, staging each reviewed file
   when the changes are uncommitted. Use this whenever the user wants to review
   changes themselves with your help, e.g. "let's review PR 42", "help me
@@ -124,18 +124,12 @@ Present the current file in this format, then stop and wait for the user:
 **What changed:** <the change in plain words; name the reviewed files it relies
 on, e.g. "uses `clamp()` from #1">
 
-```diff
-<diff of the file>
-```
-
 **Possible issues:**
 - `<path>:<line>`: <problem>. <why it matters>
 ````
 
-**Diff.** Show the whole diff of the file. If it is very long (as a rough guide,
-over 300 lines, e.g. a big new file), show the structure (classes, functions,
-what each does) and the most important parts instead. Tell the user what you
-left out; they can read it in their editor or ask for it.
+**No diff.** Read the whole diff yourself, but don't print it: the user reads
+the code in their editor. Show code only when the user asks for it.
 
 **Possible issues.** Only real problems: bugs, missed edge cases, broken
 contracts with callers or with files already reviewed, security risks, new

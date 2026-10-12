@@ -104,19 +104,13 @@ When creating or updating project's `CLAUDE.md`/`AGENTS.md` file, add a *convent
 ## Writing style
 
 ### 1. Clarity, simplicity and conciseness
-1Focus on making answers and outputs as clear as possible to a human, don't use fancy works and don't try 
+Focus on making answers and outputs as clear as possible to a human, don't use fancy works and don't try 
 to sound too sophisticated just for the sake of it.
 
 Write in an English level comparable to CEFR A2-B1. Respect this level for the vocabulary, 
 the composition of sentence, the phrasing and the prose.
-
-Reason for this request is this will be crucial for me to understand better.
-
-A public figure using this communication style, serving as example, is Donald Trump. Use that communication
-style as example of how to write. You MUST NOT do an impression, MUST NOT copy the personality, the emotionality,
-the slang, the human and social skills. Only use the sentence composing and prose skills. 
-
-This doesn't apply to technical vocabulary (e.g. commit, cryptography, tuning, Machine Learning etc.).
+Keep using technical terms (e.g. commit, branch, Machine Learning etc.) but explain things using ASD-STE100.
+This will be crucial for me to understand better.
 
 ### 2. BE SHORT
 Reduce length and complexity of your writing to the essential.

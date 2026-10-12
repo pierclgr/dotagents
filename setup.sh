@@ -6,12 +6,13 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 AGENTS_DIR="${HOME}/.agents"
 
-# 1. Link AGENTS.md, CONVENTIONS.md and skills/ into ~/.agents
+# 1. Link AGENTS.md, CONVENTIONS.md, skills/ and agents/ into ~/.agents
 rm -rf "${AGENTS_DIR}"
 mkdir -p "${AGENTS_DIR}"
 ln -sfn "${SCRIPT_DIR}/AGENTS.md" "${AGENTS_DIR}/AGENTS.md"
 ln -sfn "${SCRIPT_DIR}/CONVENTIONS.md" "${AGENTS_DIR}/CONVENTIONS.md"
 ln -sfn "${SCRIPT_DIR}/skills" "${AGENTS_DIR}/skills"
+ln -sfn "${SCRIPT_DIR}/agents" "${AGENTS_DIR}/agents"
 
 # 2. Link ~/.agents into each tool's config directory.
 # Each entry is "target_dir:link_name_for_AGENTS.md"
@@ -31,13 +32,15 @@ for entry in "${TARGETS[@]}"; do
   mkdir -p "${target_path}"
   ln -sfn "${AGENTS_DIR}/AGENTS.md" "${target_path}/${link_name}"
 
-  skills_path="${target_path}/skills"
-  # ln -sfn nests the symlink inside an existing real directory instead of
-  # replacing it, so remove it first
-  if [ -d "${skills_path}" ]; then
-    rm -rf "${skills_path}"
-  fi
-  ln -sfn "${AGENTS_DIR}/skills" "${skills_path}"
+  for folder in skills agents; do
+    folder_path="${target_path}/${folder}"
+    # ln -sfn nests the symlink inside an existing real directory instead of
+    # replacing it, so remove it first
+    if [ -d "${folder_path}" ]; then
+      rm -rf "${folder_path}"
+    fi
+    ln -sfn "${AGENTS_DIR}/${folder}" "${folder_path}"
+  done
 done
 
 echo "Setup complete."

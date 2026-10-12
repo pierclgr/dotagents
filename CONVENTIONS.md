@@ -4,8 +4,7 @@
 ## 1. Python preferences
 - Docstring style: Google
 - Coding convention: PEP8
-- Type hints: required everywhere (variables, arguments, parameters, fields,
-  returns, etc.) (PEP 484)
+- Type hints: required everywhere (variables, arguments, parameters, fields, returns, etc.) (PEP 484)
 
 ## 2. File naming
 - Default (when nothing specified): `snake_case.extension`
@@ -32,6 +31,10 @@
 ### Worktrees
 - When working with branches, use git worktrees
 - Store worktrees under `<cwd>/.worktrees/`
+
+### .gitignore
+- Use master `<cwd>/.gitignore` for `.worktrees/`, root items and project-wide patterns (e.g. files/folders that are in many parts of the project); 
+- Use the item's parent folder for local rules: `/c` in `a/b/.gitignore` ignores `a/b/c`
 
 ### Commits
 #### Message

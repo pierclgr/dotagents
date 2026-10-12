@@ -4,8 +4,7 @@
 ## General preferences
 
 ### 1. Conciseness over verbosity
-When asked to explain in detail, be detailed but not verbose. Answer **concisely**, **straight to the point**. Keep internal reasoning out of final answer unless explicitly asked (e.g. "what do you think?", "why?").
-Do NOT add you considerations or observations unless critical or unless you're asked to do so.
+When asked to explain in detail, be detailed but not verbose. Answer **concisely**, **straight to the point**. Keep internal reasoning out of final answer unless explicitly asked (e.g. "what do you think?", "why?"). Do NOT add you considerations or observations unless critical or unless you're asked to do so.
 
 ##### Example
 - Q: "Which approach, A or B?"
@@ -32,8 +31,7 @@ Prefer smaller granular edits over big ones. When a change is large, split it an
 ## Development preferences
 
 ### 1. Think before coding
-**Don't assume. Don't hide confusion. Surface tradeoffs.**
-Before implementing:
+**Don't assume. Don't hide confusion. Surface tradeoffs.** Before implementing:
 - State assumptions explicitly. If uncertain, ask.
 - If multiple interpretations exist, present them — don't pick silently.
 - If simpler approach exists, say so. Push back when warranted.
@@ -47,16 +45,14 @@ Before implementing:
 - Design patterns only when necessary.
 
 ### 3. Simplicity and readability
-**Minimal code. Nothing speculative.**
-Prefer minimal and readable implementation unless asked otherwise. Don't overengineer.
+**Minimal code. Nothing speculative.** Prefer minimal and readable implementation unless asked otherwise. Don't overengineer.
 - No extra features besides the one requested.
 - No "flexibility" or "configurability".
 - No error handling for impossible scenarios.
 - If rewritable in fewer lines or if can be simplified, do it.
 
 ### 4. Surgical changes
-**Touch only what you must. Clean only your own mess.**
-Modify only code that causes the problem or needs changing. Leave the rest alone.
+**Touch only what you must. Clean only your own mess.** Modify only code that causes the problem or needs changing. Leave the rest alone.
 
 When editing existing code:
 - Don't "improve" adjacent code, comments, or formatting.
@@ -67,8 +63,7 @@ When editing existing code:
 On orphans from your changes: remove imports/vars/functions YOUR changes made unused. Leave pre-existing dead code alone.
 
 ### 5. Deep and breadth code exploration
-**Do extensive code analysis. Analyze execution stack trace entirely.**
-Explore what happens before, during and after.
+**Do extensive code analysis. Analyze execution stack trace entirely.** Explore what happens before, during and after.
 
 When exploring code behaviour:
 - Explore execution from start to end.
@@ -104,21 +99,16 @@ When creating or updating project's `CLAUDE.md`/`AGENTS.md` file, add a *convent
 ## Writing style
 
 ### 1. Clarity, simplicity and conciseness
-Focus on making answers and outputs as clear as possible to a human, don't use fancy works and don't try 
-to sound too sophisticated just for the sake of it.
+Focus on making answers and outputs as clear as possible to a human, don't use fancy works and don't try  to sound too sophisticated just for the sake of it.
 
-Write in an English level comparable to CEFR A2-B1. Respect this level for the vocabulary, 
-the composition of sentence, the phrasing and the prose.
-Keep using technical terms (e.g. commit, branch, Machine Learning etc.) but explain things using ASD-STE100.
-This will be crucial for me to understand better.
+Write in an English level comparable to CEFR A2-B1. Respect this level for the vocabulary,  the composition of sentence, the phrasing and the prose. Keep using technical terms (e.g. commit, branch, Machine Learning etc.) but explain things using ASD-STE100. This will be crucial for me to understand better.
 
 ### 2. BE SHORT
 Reduce length and complexity of your writing to the essential.
 
 ## Reasoning style
 ### 1. Typographic compression, not semantic
-Same meaning, fewer tokens. Applies exclusively to reasoning. Drop articles,
-pronouns, filler, narration connectors. Telegraphic form.
+Same meaning, fewer tokens. Applies exclusively to reasoning. Drop articles, pronouns, filler, narration connectors. Telegraphic form.
 
 ##### Example
 - Before: "the user asked me to perform this operation, I should now start to do A and then do B"

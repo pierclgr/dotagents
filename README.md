@@ -9,7 +9,7 @@ Personal configuration for AI coding agents (Claude Code and compatible tools), 
 - `skills/assisted-code-review/` — skill to review a PR, a branch or uncommitted changes with the agent's help, one file at a time, bottom-up (files without internal imports first). Tests: `python3 -m unittest discover -s skills/assisted-code-review/tests`.
 - `skills/deep-criticality-analysis/` — skill to run a whole-repo criticality analysis (bugs, code smells, risks, test-suite gaps).
 - `skills/open-pr/` — skill to open a GitHub PR from the current branch, following the conventions above.
-- `agents/claude/ORCHESTRATOR.md` — main session agent for a software engineering workflow: product owner and orchestrator of subagents, gives one feature to each planner subagent (Opus, `xhigh` effort). Run with `claude --agent orchestrator`.
+- `agents/claude/ORCHESTRATOR.md` — main session agent for a software engineering workflow: product owner and orchestrator, gives one feature to each planner subagent and never uses researcher or coder subagents directly (Opus, `xhigh` effort). Run with `claude --agent orchestrator`.
 - `agents/claude/PLANNER.md` — subagent that plans one feature from start to end and delegates its research and implementation to researcher and coder subagents; reports only to the orchestrator (Opus, `xhigh` effort).
 - `agents/claude/CODER.md` — subagent that plans the implementation of a feature or a single element in plan mode, implements it, and reports only to its planner (Sonnet, `xhigh` effort).
 - `agents/claude/RESEARCHER.md` — subagent that explores the documentation, the codebase or the web as its planner asks, and reports only to the planner (Haiku, `xhigh` effort).

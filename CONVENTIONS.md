@@ -30,6 +30,7 @@
 
 ### Worktrees
 - When working with branches, use git worktrees
+- Ideally (not strict), use one dedicated branch and worktree for each feature
 - Store worktrees under `<cwd>/.worktrees/`
 
 ### .gitignore

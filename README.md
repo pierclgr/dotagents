@@ -7,6 +7,8 @@ Personal configuration for AI coding agents (Claude Code and compatible tools), 
 - `AGENTS.md` — general, development, and documentation preferences.
 - `CONVENTIONS.md` — code, naming, git, and PR conventions for new projects.
 - `skills/assisted-code-review/` — skill to review a PR, a branch or uncommitted changes with the agent's help, one file at a time, bottom-up (files without internal imports first). Tests: `python3 -m unittest discover -s skills/assisted-code-review/tests`.
+- `skills/engineering-refactor/` — skill to find software-engineering complexity (over-engineering, dead code, unneeded abstraction, god objects, coupling, duplication), report the findings, ask which ones to implement and then simplify only those, with tests and one commit per change.
+- `skills/complexity-refactor/` — skill to find computational complexity (inefficient algorithms, wasted runtime and memory), report the findings, ask which ones to implement and then refactor only those, with tests and one commit per change.
 - `skills/deep-criticality-analysis/` — skill to run a whole-repo criticality analysis (bugs, code smells, risks, test-suite gaps).
 - `skills/open-pr/` — skill to open a GitHub PR from the current branch, following the conventions above.
 - `agents/claude/ORCHESTRATOR.md` — main session agent for a software engineering workflow: product owner and orchestrator, gives one feature to each planner subagent and never uses researcher or coder subagents directly (Opus, `xhigh` effort). Run with `claude --agent orchestrator`.

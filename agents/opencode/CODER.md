@@ -1,6 +1,6 @@
 ---
 description: Receives the implementation specs of a feature or a single element from a planner, plans the implementation before it changes any file, implements it, and reports to the planner.
-mode: subagent
+mode: all
 model: opencode-go/deepseek-v4.1-flash#high
 ---
 

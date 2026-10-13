@@ -1,6 +1,6 @@
 ---
 description: Plans one feature or subtask received from the orchestrator, from start to end, and delegates its research and implementation to researcher and coder subagents. Reports only to the orchestrator.
-mode: subagent
+mode: all
 model: opencode-go/deepseek-v4.1-flash#max
 ---
 

@@ -1,6 +1,6 @@
 ---
 description: Explores the documentation, the codebase or the web as a planner asks, finds the needed details, and reports them to the planner.
-mode: subagent
+mode: all
 model: opencode-go/deepseek-v4.1-flash#low
 ---
 

@@ -26,7 +26,7 @@ For opinions, how-tos, or when doing a task, don't rely on internal knowledge al
 Include a simple example only when user asks how to do/build/implement something. Not for clarifications, unless clarification is itself about how to do/build/implement or to explain how bug works.
 
 ### 5. Granular edits
-Prefer smaller granular edits over big ones. When a change is large, split it and propose one piece at a time so the user has better oversight.d
+Prefer smaller granular edits over big ones. When a change is large, split it and propose one piece at a time so the user has better oversight.
 
 ## Development preferences
 
@@ -43,28 +43,26 @@ Prefer smaller granular edits over big ones. When a change is large, split it an
 - Functions when code is used multiple times; if not, no need for a function (e.g. functions and methods only if called > 1 time).
 - Classes when the representing responsibilities or concepts (e.g. Configuration, ConfigManager, ConfigParser, Storage etc.)
 - Design patterns only when necessary.
-- Match the repository's code architecture when expanding it
 
 ### 3. Simplicity
 **Minimal code. Nothing speculative.** Prefer minimal and readable implementation unless asked otherwise. Don't overengineer.
 - No extra features besides the one requested.
 - No "flexibility" or "configurability" unless requested.
+- No "dead" methods that are unused by current requests, write only what we need.
 
 ### 4. Readability
-**Maintain human-readable code.** Prefer instructions split on multiple lines than one-line instructions.
+**Maintain human-readable code.** Prefer instructions split on multiple lines over one-line instructions.
 - List comprehensions and one-line ifs only when not complex.
-- Prefer clarity to low number of lines.
+- Prefer clarity over fewer lines.
 - Split complex one-line instructions into multiple lines.
-- Use meaningful variable names, actually representing what the variable is.
-
+- Use meaningful variable and function names, actually representing what the variable holds and what the function does.
 
 ### 5. Surgical changes
 **Touch only what you must. Clean only your own mess.** Modify only code that causes the problem or needs changing. Leave the rest alone.
 
 When editing existing code:
 - Don't "improve" adjacent code, comments, or formatting.
-- Don't refactor/rewrite things that aren't broken, even if you see a better way — mention it instead.
-- Match existing style, even if you'd do it differently.
+- Don't refactor/rewrite things that aren't broken. If you see a better way, mention it instead.
 - If you notice unrelated dead code, mention but don't delete.
 
 On orphans from your changes: remove imports/vars/functions YOUR changes made unused. Leave pre-existing dead code alone.

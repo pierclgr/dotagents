@@ -38,11 +38,17 @@ Prefer smaller granular edits over big ones. When a change is large, split it an
 - If unclear, stop. Name what's confusing. Ask.
 
 ### 2. Software engineering principles
-**Adhere to SOLID principles. Prefer composition over inheritance.**
+**Adhere to SOLID and clean code principles. Prefer composition over inheritance.**
 - Aim for code reusability and abstraction, but do not abstract if unnecessary.
 - Functions when code is used multiple times; if not, no need for a function (e.g. functions and methods only if called > 1 time).
 - Classes when the representing responsibilities or concepts (e.g. Configuration, ConfigManager, ConfigParser, Storage etc.)
 - Design patterns only when necessary.
+- Meaningful names: use variable and function names that actually represent what the variable holds and what the function does.
+- No magic numbers: put fixed values in named constants.
+- Guard clauses: handle bad cases first and return early. Avoid deep nesting.
+- DRY (Don't Repeat Yourself): keep each rule in one place. Don't copy it.
+- Testable code: keep logic separate from I/O (files, print, network), so you can test it alone.
+- Clear errors: error messages say what went wrong and show the bad value.
 
 ### 3. Simplicity
 **Minimal code. Nothing speculative.** Prefer minimal and readable implementation unless asked otherwise. Don't overengineer.
@@ -55,7 +61,6 @@ Prefer smaller granular edits over big ones. When a change is large, split it an
 - List comprehensions and one-line ifs only when not complex.
 - Prefer clarity over fewer lines.
 - Split complex one-line instructions into multiple lines.
-- Use meaningful variable and function names, actually representing what the variable holds and what the function does.
 
 ### 5. Surgical changes
 **Touch only what you must. Clean only your own mess.** Modify only code that causes the problem or needs changing. Leave the rest alone.

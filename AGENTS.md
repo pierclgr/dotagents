@@ -43,15 +43,22 @@ Prefer smaller granular edits over big ones. When a change is large, split it an
 - Functions when code is used multiple times; if not, no need for a function (e.g. functions and methods only if called > 1 time).
 - Classes when the representing responsibilities or concepts (e.g. Configuration, ConfigManager, ConfigParser, Storage etc.)
 - Design patterns only when necessary.
+- Match the repository's code architecture when expanding it
 
-### 3. Simplicity and readability
+### 3. Simplicity
 **Minimal code. Nothing speculative.** Prefer minimal and readable implementation unless asked otherwise. Don't overengineer.
 - No extra features besides the one requested.
-- No "flexibility" or "configurability".
-- No error handling for impossible scenarios.
-- If rewritable in fewer lines or if can be simplified, do it.
+- No "flexibility" or "configurability" unless requested.
 
-### 4. Surgical changes
+### 4. Readability
+**Maintain human-readable code.** Prefer instructions split on multiple lines than one-line instructions.
+- List comprehensions and one-line ifs only when not complex.
+- Prefer clarity to low number of lines.
+- Split complex one-line instructions into multiple lines.
+- Use meaningful variable names, actually representing what the variable is.
+
+
+### 5. Surgical changes
 **Touch only what you must. Clean only your own mess.** Modify only code that causes the problem or needs changing. Leave the rest alone.
 
 When editing existing code:
@@ -62,7 +69,7 @@ When editing existing code:
 
 On orphans from your changes: remove imports/vars/functions YOUR changes made unused. Leave pre-existing dead code alone.
 
-### 5. Deep and breadth code exploration
+### 6. Deep and breadth code exploration
 **Do extensive code analysis. Analyze execution stack trace entirely.** Explore what happens before, during and after.
 
 When exploring code behaviour:
@@ -89,7 +96,7 @@ When making code changes, make sure to **keep documentation up-to-date**:
 - Update existing comments, if any.
 - Update repo's documentation files, if any.
 - Update repo's `CLAUDE.md` and `AGENTS.md` files.
-- Only comment complex code slices, keep comments minimal and simple.
+- Comment often to keep code readable for humans.
 
 ### 2. CLAUDE.md/AGENTS.md
 When creating or updating project's `CLAUDE.md`/`AGENTS.md` file, add a *convention* section with code, docstring and other conventions if it doesn't exist:

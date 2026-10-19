@@ -67,6 +67,8 @@ Hunt across four categories. These are lenses, not a checklist — use whichever
 - **future-risk** — patterns that work today but will break under change or scale: hardcoded paths/values, missing input validation, deprecated APIs, unbounded growth (lists/caches that never evict), assumptions that won't hold at scale, clusters of `TODO`/`FIXME`/`HACK`, config that should be external, missing retries/timeouts on I/O.
 - **security** — injection (SQL/command/template), unsafe deserialization, secret handling (logged secrets, committed keys), path traversal, missing auth/authz checks, unsafe regex (ReDoS), SSRF.
 
+Two of these areas have a dedicated skill you can use for deeper analysis: `engineering-refactor` for **code-smell** (over-engineering, dead code, unneeded abstraction, god objects, coupling, duplication, deep nesting) and `complexity-refactor` for inefficient algorithms and wasted runtime/memory (record these as **future-risk**). Use only their read-only analysis phases: stop before they ask which findings to implement, and never run their implement step — this analysis stays read-only. Add what they find to this report, in this report's format.
+
 For every candidate finding, verify the full path before recording it. False positives erode trust in the whole report; a finding that doesn't actually hold is worse than one missing.
 
 ## Phase 4 — Assess the test suite
@@ -118,6 +120,8 @@ Output the report in the conversation. Do not write a file. Use exactly this str
 Keep findings to ~2–3 lines each. The format per finding is:
 
 `severity · category · file:line — description → fix suggestion`
+
+When the fix is a refactor, the fix suggestion and the top recommendations can point to the skill that does it: `engineering-refactor` for code-smell findings, `complexity-refactor` for inefficient algorithms and wasted runtime/memory.
 
 Severity guidance:
 - **Critical** — will cause incorrect behavior, data loss, or a security breach in normal use. Fix now.

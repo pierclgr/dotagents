@@ -7,9 +7,11 @@ Personal configuration for AI coding agents (Claude Code and compatible tools), 
 - `AGENTS.md` — general, development, and documentation preferences.
 - `CONVENTIONS.md` — code, naming, git, and PR conventions for new projects.
 - `skills/assisted-code-review/` — skill to review a PR, a branch or uncommitted changes with the agent's help, one file at a time, bottom-up (files without internal imports first). Tests: `python3 -m unittest discover -s skills/assisted-code-review/tests`.
+- `skills/engineering-refactor/` — skill to find software-engineering complexity (over-engineering, dead code, unneeded abstraction, god objects, coupling, duplication), report the findings, ask which ones to implement and then simplify only those, with tests and one commit per change.
+- `skills/complexity-refactor/` — skill to find computational complexity (inefficient algorithms, wasted runtime and memory), report the findings, ask which ones to implement and then refactor only those, with tests and one commit per change.
 - `skills/deep-criticality-analysis/` — skill to run a whole-repo criticality analysis (bugs, code smells, risks, test-suite gaps).
 - `skills/open-pr/` — skill to open a GitHub PR from the current branch, following the conventions above.
-- `agents/claude/ORCHESTRATOR.md` — main session agent for a software engineering workflow: product owner and orchestrator of subagents, gives one feature to each planner subagent (Opus, `xhigh` effort). Run with `claude --agent orchestrator`.
+- `agents/claude/ORCHESTRATOR.md` — main session agent for a software engineering workflow: product owner and orchestrator, gives one feature to each planner subagent and never uses researcher or coder subagents directly (Opus, `xhigh` effort). Run with `claude --agent orchestrator`.
 - `agents/claude/PLANNER.md` — subagent that plans one feature from start to end and delegates its research and implementation to researcher and coder subagents; reports only to the orchestrator (Opus, `xhigh` effort).
 - `agents/claude/CODER.md` — subagent that plans the implementation of a feature or a single element in plan mode, implements it, and reports only to its planner (Sonnet, `xhigh` effort).
 - `agents/claude/RESEARCHER.md` — subagent that explores the documentation, the codebase or the web as its planner asks, and reports only to the planner (Haiku, `xhigh` effort).

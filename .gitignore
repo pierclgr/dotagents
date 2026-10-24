@@ -1,18 +1,6 @@
 # Ignore macos stuff
 .DS_Store
-.serena
 
 # Ignore python stuff
 __pycache__/
 .venv/
-
-# other skills
-hatch-pet/
-synced/
-plannotator/
-plannotator-visual-explainer/
-find-skills/
-visual-explainer/
-c4-architecture/
-d2-diagram/
-mermaid-diagrams/

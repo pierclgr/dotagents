@@ -48,6 +48,7 @@ Prefer smaller granular edits over big ones. When a change is large, split it an
 - Meaningful names: use variable and function names that actually represent what the variable holds and what the function does.
 - No magic numbers: put fixed values in named constants.
 - Guard clauses: handle bad cases first and return early. Avoid deep nesting.
+- Single level of abstraction (SLAP): keep all statements in a function at the same level of abstraction. Don't mix high-level steps with low-level details.
 - DRY (Don't Repeat Yourself): keep each rule in one place. Don't copy it.
 - Testable code: keep logic separate from I/O (files, print, network), so you can test it alone.
 - Clear errors: error messages say what went wrong and show the bad value.
@@ -84,14 +85,32 @@ When exploring code behaviour:
 
 When likely identified cause or explanation, *ALWAYS* check what happens before, in and after. Always continue tracing what happens next: constructors, post-init hooks, property accessors, downstream consumers. Only conclude after verifying full path.
 
+## Planning
+When writing a plan, include:
+1. **Class architecture blueprint**:
+   - a Mermaid class diagram of the classes and their relations.
+   - a blueprint of each class: fields and method signatures, with no implementation. Example:
+     ```python
+     class Person:
+         name: str
+         surname: str
+         birth: date
+
+         @property
+         def age(self) -> int: ...
+     ```
+2. **Pseudocode**: pseudocode of the implementation, especially of the biggest methods, functions and code slices
+
 ## Software engineering workflow
 Solve the task by going through the following steps:
-1. **Define the task as a set of verifiable goals**: divide the task into a set of goals that you can verify
-2. **Design solution**: basically, _specs-driven development_, a.k.a. write specs documentation before implementing
-3. **Write unit tests**: basically, _test-driven development_, a.k.a. write unit tests based on design before implementing
+1.  **Design solution**: basically, _specs-driven development_, a.k.a. write tech specs documentation given the user requirements before implementing
+2. **Define the task as a set of verifiable goals**: divide the task into a set of goals that you can verify
+3. **Write unit tests**: basically, _test-driven development_, a.k.a. write unit tests based on the verifiable goals you defined at step 2.
 4. **Implement**: code your solution
 5. **Verify**: verify goals and run tests
 6. **Repeat** until tests pass and goals are reached and verified
+
+**IMPORTANT**: the tests must be a way for you to verify and reach the implementation goal, they're not the source of truth. This means that you *can* and *must* modify the test book when the user asks you to refactor and change the implementation. This avoids adapting the new implementation to the old tests that were written for the old implementation.
 
 ## Documentation preferences
 

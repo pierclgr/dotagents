@@ -42,6 +42,8 @@ Prefer smaller granular edits over big ones. When a change is large, split it an
 - Aim for code reusability and abstraction, but do not abstract if unnecessary.
 - Functions when code is used multiple times; if not, no need for a function (e.g. functions and methods only if called > 1 time).
 - Classes when the representing responsibilities or concepts (e.g. Configuration, ConfigManager, ConfigParser, Storage etc.)
+- Fields and methods: private if used only by the class, protected if used only
+  by the class and its subclasses, public if used elsewhere too.
 - Design patterns only when necessary.
 - Meaningful names: use variable and function names that actually represent what the variable holds and what the function does.
 - No magic numbers: put fixed values in named constants.
@@ -123,5 +125,7 @@ Same meaning, fewer tokens. Applies exclusively to reasoning. Drop articles, pro
 ##### Example
 - Before: "the user asked me to perform this operation, I should now start to do A and then do B"
 - After: "user asked perform operation, do A, then B"
+
+## Conventions
 
 @CONVENTIONS.md

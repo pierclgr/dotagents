@@ -1,7 +1,7 @@
 ---
 name: assisted-code-review
 description: >-
-  Guide the user through their own review of a PR, a branch, or uncommitted changes, one file at a time, bottom-up: files with no internal imports first, then the files that use them. First shows a table of all added, modified and deleted files in review order, with a summary of each. Then presents each file with a summary and possible issues, answers the user's questions, and moves to the next file when the user says so, staging each reviewed file when the changes are uncommitted. Use this whenever the user wants to review changes themselves with your help, e.g. "let's review PR 42", "help me review my changes", "walk me through this branch file by file", "review my uncommitted files before I commit", "assisted review", even if they don't name the skill. Not for one-shot automated reviews where the user only wants a list of bugs.
+  Guide the user through their own review of a PR, a branch, or uncommitted changes, one file at a time, top-down: files that use other changed files first, then their dependencies. First shows a table of all added, modified and deleted files in review order, with a summary of each. Then presents each file with a summary and possible issues, answers the user's questions, and moves to the next file when the user says so, staging each reviewed file when the changes are uncommitted. Use this whenever the user wants to review changes themselves with your help, e.g. "let's review PR 42", "help me review my changes", "walk me through this branch file by file", "review my uncommitted files before I commit", "assisted review", even if they don't name the skill. Not for one-shot automated reviews where the user only wants a list of bugs.
 compatibility: >-
   Requires `git` and Python 3.10+. PR review needs the GitHub CLI (`gh`), authenticated.
 ---
@@ -10,7 +10,7 @@ compatibility: >-
 
 The user reviews the code; you assist. You set the order, show each file, point out possible issues and answer questions. The user decides when a file is done.
 
-The order is bottom-up so that, when a file comes up, every changed file it uses was already reviewed: the user already knows the building blocks.
+The order is top-down: review files that use other changed files before their dependencies, so the user sees how the pieces fit together first.
 
 ## 1. Pick the target
 
@@ -43,7 +43,7 @@ python3 ~/.claude/skills/assisted-code-review/scripts/review_order.py
 python3 ~/.claude/skills/assisted-code-review/scripts/review_order.py --base <base> --head <head>
 ```
 With no arguments it reads the uncommitted changes: staged, unstaged and untracked. It prints JSON:
-- `python`: changed Python files, already in review order. Each has `path`, `status`, `old_path` (renames), `depends_on` (changed files it imports, directly or through unchanged files) and `cycle` (files in the same import cycle; they stay next to each other).
+- `python`: changed Python files in bottom-up order; reverse this list for top-down review. Each has `path`, `status`, `old_path` (renames), `depends_on` (changed files it imports, directly or through unchanged files) and `cycle` (files in the same import cycle; they stay next to each other).
 - `other`: changed non-Python files, not sorted.
 - `deleted`: deleted files.
 - `unparsed`: Python files whose imports could not be read (e.g. syntax errors). Read their imports yourself and move them if needed.
@@ -51,7 +51,7 @@ With no arguments it reads the uncommitted changes: staged, unstaged and untrack
 Import matching is a heuristic. If, while reading the code, you see that the order is clearly wrong, fix it.
 
 Build the final order in three blocks:
-1. **Code, bottom-up.** The `python` list as given, then the code files in other languages from `other` (JS/TS, Go, Rust, Java, shell, SQL, ...). For those, read the imports yourself and apply the same rule: a file comes after every changed file it imports, directly or through unchanged files; files in a cycle stay together; ties go by path.
+1. **Code, top-down.** The reversed `python` list, then the code files in other languages from `other` (JS/TS, Go, Rust, Java, shell, SQL, ...). For those, read the imports yourself and apply the same rule: a file comes before every changed file it imports, directly or through unchanged files; files in a cycle stay together; ties go by path.
 2. **Deleted files**, from `deleted`.
 3. **Non-code files** from `other`: docs, configs, data, lock files, etc.
 
@@ -68,8 +68,8 @@ Then show the table, using this format:
 
 | # | Path              | Change   | Summary                                 |
 |---|-------------------|----------|-----------------------------------------|
-| 1 | `src/pkg/core.py` | modified | Math helpers. Adds `clamp()` for the API. |
-| 2 | `src/pkg/api.py`  | added    | HTTP API. New `/limits` endpoint.         |
+| 1 | `src/pkg/api.py`  | added    | HTTP API. New `/limits` endpoint.         |
+| 2 | `src/pkg/core.py` | modified | Math helpers. Adds `clamp()` for the API. |
 ```
 - Target: `PR #42 "<title>"`, `` branch `x` vs `main` `` or `uncommitted changes`.
 - Change: `added`, `modified`, `deleted` or `renamed` (for renames, write `old → new` in the Path column).
@@ -85,8 +85,8 @@ Present the current file in this format, then stop and wait for the user:
 ### <k>/<N> · `<path>` (<change>)
 
 **What it is:** <role of the file in the codebase>
-**What changed:** <the change in plain words; name the reviewed files it relies
-on, e.g. "uses `clamp()` from #1">
+**What changed:** <the change in plain words; name relevant changed files,
+e.g. "uses `clamp()` from #2", even if they have not been reviewed yet>
 
 **Possible issues:**
 - `<path>:<line>`: <problem>. <why it matters>

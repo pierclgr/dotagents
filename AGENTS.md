@@ -89,15 +89,17 @@ When likely identified cause or explanation, *ALWAYS* check what happens before,
 When writing a plan, include:
 1. **Class architecture blueprint**:
    - a Mermaid class diagram of the classes and their relations.
-   - a blueprint of each class: fields and method signatures, with no implementation. Example:
+   - a blueprint of each class: fields and method signatures, with no
+     implementation. Each field and method has a short description of what it
+     holds or does. Example:
      ```python
      class Person:
-         name: str
-         surname: str
-         birth: date
+         name: str  # first name of the person
+         surname: str  # last name of the person
+         birth: date  # date of birth
 
          @property
-         def age(self) -> int: ...
+         def age(self) -> int: ...  # age in years, computed from birth
      ```
 2. **Pseudocode**: pseudocode of the implementation, especially of the biggest methods, functions and code slices
 

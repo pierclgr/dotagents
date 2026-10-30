@@ -90,9 +90,10 @@ When writing a plan, include:
 1. **Class architecture blueprint**:
    - a Mermaid class diagram of the classes and their relations.
    - a blueprint of each class: fields and method signatures, with no
-     implementation. Each field and method has a short description of what it
-     holds or does. Example:
+     implementation. Each class, field, method and has a short 
+     description of what it holds or does. Example:
      ```python
+     # class representing a person
      class Person:
          name: str  # first name of the person
          surname: str  # last name of the person

@@ -1,7 +1,16 @@
 ---
 name: assisted-code-review
 description: >-
-  Guide the user through their own review of a PR, a branch, or uncommitted changes, one file at a time, top-down: files that use other changed files first, then their dependencies. First shows a table of all added, modified and deleted files in review order, with a summary of each. Then presents each file with a summary and possible issues, answers the user's questions, and moves to the next file when the user says so, staging each reviewed file when the changes are uncommitted. Use this whenever the user wants to review changes themselves with your help, e.g. "let's review PR 42", "help me review my changes", "walk me through this branch file by file", "review my uncommitted files before I commit", "assisted review", even if they don't name the skill. Not for one-shot automated reviews where the user only wants a list of bugs.
+  Guide the user through their review of a PR, branch, or uncommitted changes,
+  one file at a time, top-down: callers before dependencies. Show a table of all
+  changed files with summaries, then present each file with possible issues,
+  answer questions, and move on when the user says so. For uncommitted changes,
+  stage deleted files immediately without user review; stage other files after
+  review. Use when the user wants to review changes themselves with your help,
+  e.g. "let's review PR 42", "help me review my changes", "walk me through this
+  branch file by file", "review my uncommitted files before I commit", "assisted
+  review", even if they don't name the skill. Not for one-shot automated reviews
+  where the user only wants a list of bugs.
 compatibility: >-
   Requires `git` and Python 3.10+. PR review needs the GitHub CLI (`gh`), authenticated.
 ---
@@ -50,9 +59,15 @@ With no arguments it reads the uncommitted changes: staged, unstaged and untrack
 
 Import matching is a heuristic. If, while reading the code, you see that the order is clearly wrong, fix it.
 
+**Uncommitted target only:** immediately stage each unstaged deletion in
+`deleted` with `git add -- <path>`, without asking the user to review or approve
+it. Leave already staged deletions unchanged. Keep deleted files in the overview
+table, marked as staged, but exclude them from the review queue and review count.
+For PR or branch targets, review deletions as usual and do not stage them.
+
 Build the final order in three blocks:
 1. **Code, top-down.** The reversed `python` list, then the code files in other languages from `other` (JS/TS, Go, Rust, Java, shell, SQL, ...). For those, read the imports yourself and apply the same rule: a file comes before every changed file it imports, directly or through unchanged files; files in a cycle stay together; ties go by path.
-2. **Deleted files**, from `deleted`.
+2. **Deleted files**, from `deleted` (PR or branch targets only).
 3. **Non-code files** from `other`: docs, configs, data, lock files, etc.
 
 ## 3. Show the table
@@ -75,7 +90,10 @@ Then show the table, using this format:
 - Change: `added`, `modified`, `deleted` or `renamed` (for renames, write `old → new` in the Path column).
 - Summary: one or two short sentences: what the file is, then what the change brings. For files in an import cycle, add "import cycle with #5".
 
-Then go straight to file #1.
+For uncommitted deletions, use `—` in the # column and add "Staged without
+review" to the summary. Number only files in the review queue; `<N>` is their
+count. If the queue is empty, go straight to the wrap-up. Otherwise, start with
+file #1.
 
 ## 4. Review one file at a time
 
@@ -109,7 +127,12 @@ When the user says the file is done ("next", "ok", "done", "LGTM", ...):
    git add -- <path>
    git add -- <old_path> <path>
    ```
-   Use the second form for renames. `git add` also stages new files and deletions. Confirm in one line ("Staged `<path>`."). Staging marks what is reviewed: what is still unstaged at the end was not reviewed. So don't stage skipped files, and if you edit an already staged file on request, tell the user it now has unstaged changes. For PR or branch targets there is nothing to stage.
+   Use the second form for renames. `git add` also stages new files. Confirm in
+   one line ("Staged `<path>`."). Except for deletions staged automatically,
+   staging marks what is reviewed: what is still unstaged at the end was not
+   reviewed. So don't stage skipped files, and if you edit an already staged
+   file on request, tell the user it now has unstaged changes. For PR or branch
+   targets there is nothing to stage.
 2. Present the next file in the same format.
 
 ## 5. Wrap up
@@ -117,4 +140,6 @@ When the user says the file is done ("next", "ok", "done", "LGTM", ...):
 After the last file, give a short wrap-up:
 - Files reviewed and files skipped.
 - Issues still open (fixes agreed but not done, open questions), with `path:line`.
-- Uncommitted target: run `git status --short` and confirm the reviewed files are staged. Don't commit.
+- Uncommitted target: run `git status --short` and confirm reviewed files and
+  automatic deletions are staged. List deletions separately from reviewed and
+  skipped files. Don't commit.

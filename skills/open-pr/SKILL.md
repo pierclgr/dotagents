@@ -44,7 +44,7 @@ Run these steps in order. Stop and report if a precondition fails.
 ### 5. Write title and body per conventions
 Read the user's conventions and follow the **Pull requests** section:
 ```bash
-cat ~/.claude/CONVENTIONS.md
+cat ~/.agents/memory/conventions/tools/git.md
 ```
 Apply whatever the file specifies for PR **title** and **description**. If the file is missing, or has no PR-specific rules, use the default format below.
 

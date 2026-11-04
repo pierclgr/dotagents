@@ -6,11 +6,11 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 AGENTS_DIR="${HOME}/.agents"
 
-# 1. Link AGENTS.md, CONVENTIONS.md, skills/ and agents/ into ~/.agents
+# 1. Link shared instructions, memory, skills and agents into ~/.agents
 rm -rf "${AGENTS_DIR}"
 mkdir -p "${AGENTS_DIR}"
 ln -sfn "${SCRIPT_DIR}/AGENTS.md" "${AGENTS_DIR}/AGENTS.md"
-ln -sfn "${SCRIPT_DIR}/CONVENTIONS.md" "${AGENTS_DIR}/CONVENTIONS.md"
+ln -sfn "${SCRIPT_DIR}/memory" "${AGENTS_DIR}/memory"
 ln -sfn "${SCRIPT_DIR}/skills" "${AGENTS_DIR}/skills"
 ln -sfn "${SCRIPT_DIR}/agents" "${AGENTS_DIR}/agents"
 

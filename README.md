@@ -5,7 +5,7 @@ Personal configuration for AI coding agents (Claude Code and compatible tools), 
 ## Contents
 
 - `AGENTS.md` — general, development, and documentation preferences.
-- `CONVENTIONS.md` — code, naming, git, and PR conventions for new projects.
+- `memory/` — user preferences, conventions and other remembered context.
 - `skills/assisted-code-review/` — skill to review a PR, a branch or uncommitted changes with the agent's help, one file at a time, bottom-up (files without internal imports first). Tests: `python3 -m unittest discover -s skills/assisted-code-review/tests`.
 - `skills/engineering-refactor/` — skill to find software-engineering complexity (over-engineering, dead code, unneeded abstraction, god objects, coupling, duplication), report the findings, ask which ones to implement and then simplify only those, with tests and one commit per change.
 - `skills/complexity-refactor/` — skill to find computational complexity (inefficient algorithms, wasted runtime and memory), report the findings, ask which ones to implement and then refactor only those, with tests and one commit per change.
@@ -28,7 +28,7 @@ Run the setup script to install:
 ./setup.sh
 ```
 
-It copies `AGENTS.md`, `CONVENTIONS.md`, `skills/` and `agents/` into `~/.agents`, then symlinks them into each supported tool's config directory:
+It links `AGENTS.md`, `memory/`, `skills/` and `agents/` into `~/.agents`, then symlinks them into each supported tool's config directory:
 
 - `~/.claude/CLAUDE.md`
 - `~/.pi/AGENTS.md`

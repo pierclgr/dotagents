@@ -32,7 +32,7 @@ for entry in "${TARGETS[@]}"; do
   mkdir -p "${target_path}"
   ln -sfn "${AGENTS_DIR}/AGENTS.md" "${target_path}/${link_name}"
 
-  for folder in skills agents; do
+  for folder in memory skills agents; do
     source_path="${AGENTS_DIR}/${folder}"
     # agents/ is split per tool: link only the tool's own subfolder
     if [ "${folder}" = "agents" ]; then

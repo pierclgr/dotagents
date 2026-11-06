@@ -36,6 +36,6 @@ It links `AGENTS.md`, `memory/`, `skills/` and `agents/` into `~/.agents`, then 
 - `~/.cursor/AGENTS.md`
 - `~/.config/opencode/AGENTS.md`
 
-Each tool loads its linked `AGENTS.md`/`CLAUDE.md` as global instructions, its linked `skills/` directory as available skills and its linked `agents/` directory as available agents. Each tool's `agents/` links to its own subfolder: `~/.claude/agents` → `agents/claude/`, `~/.codex/agents` → `agents/codex/`, `~/.config/opencode/agents` → `agents/opencode/`. Pi and Cursor get no `agents/` link.
+Each tool loads its linked `AGENTS.md`/`CLAUDE.md` as global instructions, its linked `memory/` directory as remembered context, its linked `skills/` directory as available skills and its linked `agents/` directory as available agents. Each tool's `agents/` links to its own subfolder: `~/.claude/agents` → `agents/claude/`, `~/.codex/agents` → `agents/codex/`, `~/.config/opencode/agents` → `agents/opencode/`. Pi and Cursor get no `agents/` link.
 
-**Warning:** the script is destructive. It deletes `~/.agents` entirely before recreating it, and for each target it removes any pre-existing `skills/` and `agents/` folders (if they're real directories, not symlinks) before replacing them with symlinks. Back up any local changes under those paths first.
+**Warning:** the script is destructive. It deletes `~/.agents` entirely before recreating it, and for each target it removes any pre-existing `memory/`, `skills/` and `agents/` folders (if they're real directories, not symlinks) before replacing them with symlinks. Back up any local changes under those paths first.

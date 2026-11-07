@@ -9,10 +9,42 @@ conflict, always prefer the project ones.
 ## Memory
 
 The user-level [`memory/`](memory/) directory contains memorized context,
-learnings, information and preferences. Fetch, read and filter relevant files
-when needed, and add relevant information and learnings there.
+learnings, information, preferences and instructions. Individual repositories
+may also have a `memory/` directory for project-specific context and learnings.
+Both can contain instructions that are not repeated in `AGENTS.md` or
+`CLAUDE.md`.
 
-Individual repositories may also have a `memory/` directory for project-specific
-context and learnings. Reference and modify the appropriate directory for each item.
+Before starting any task, explore these directories. Read the files that define
+general behavior and those relevant to the task, then follow their applicable
+instructions.
+
+The user-level directory is organized as follows:
+
+```text
+memory/
+├── communication.md             # response style and communication
+├── reasoning.md                 # reasoning preferences
+├── research.md                  # research and verification
+├── conventions/
+│   ├── general.md               # general conventions
+│   ├── code_comments.md         # comment style
+│   ├── file_naming.md           # file naming rules
+│   ├── repository_structure.md  # project directory layout
+│   ├── languages/
+│   │   ├── markdown.md          # Markdown formatting
+│   │   └── python.md            # Python conventions
+│   └── tools/
+│       └── git.md               # branches, commits and pull requests
+└── development/
+    ├── code_exploration.md      # code analysis and tracing
+    ├── documentation.md         # documentation and memory maintenance
+    ├── planning.md              # planning requirements
+    ├── principles.md            # design and implementation principles
+    └── workflow.md              # development and verification steps
+```
+
+Keep this map up to date when memory files are added, moved or removed.
+Add relevant information and learnings to the appropriate user-level or
+project-level memory files.
 
 Do not duplicate memory contents in `CLAUDE.md` or `AGENTS.md`.

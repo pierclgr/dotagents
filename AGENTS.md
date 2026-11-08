@@ -38,7 +38,7 @@ memory/
 └── development/
     ├── code_exploration.md      # code analysis and tracing
     ├── documentation.md         # documentation and memory maintenance
-    ├── planning.md              # planning requirements
+    ├── planning.md              # instructions to follow when writing a plan
     ├── principles.md            # design and implementation principles
     └── workflow.md              # development and verification steps
 ```

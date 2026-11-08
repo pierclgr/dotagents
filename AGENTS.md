@@ -14,9 +14,9 @@ may also have a `memory/` directory for project-specific context and learnings.
 Both can contain instructions that are not repeated in `AGENTS.md` or
 `CLAUDE.md`.
 
-Before starting any task, explore these directories. Read the files that define
-general behavior and those relevant to the task, then follow their applicable
-instructions.
+Before starting any task, you **MUST** explore these directories and files. Read 
+the files that define general behavior and those relevant to the task, then 
+follow their applicable instructions.
 
 The user-level directory is organized as follows:
 

@@ -46,18 +46,25 @@ Read the user's conventions and follow the **Pull requests** section:
 ```bash
 cat ~/.agents/memory/conventions/tools/git.md
 ```
-Apply whatever the file specifies for PR **title** and **description**. If the file is missing, or has no PR-specific rules, use the default format below.
+Apply whatever the file specifies for PR **title** and **description**. If the file is missing, or has no PR-specific rules, use the default format below. In both cases, also add the mermaid diagram described below.
 
 To pick a title prefix / tone, use the commits (`git log <base>..HEAD`) and the branch name (e.g. `feature/*`, `fix/*`) as signals for whether this is a feature or a fix.
 
 **Default format** (only when conventions don't specify one):
 - Title: a short, imperative summary of the change.
-- Body: a one-line headline of what the change does, then a bulleted list of the concrete changes. No test plan. No mention of AI/coding agents.
+- Body: a one-line headline of what the change does, then the mermaid diagram, then a bulleted list of the concrete changes. No test plan. No mention of AI/coding agents.
+
+**Mermaid diagram** (always, on top of the conventions or the default format):
+- Put it in its own `## Diagram` section, after the Motivation section and before the Code section, inside a ` ```mermaid ` code block (GitHub renders it).
+- Build it from the real diff (`git diff <base>...HEAD --stat` and the changed code), not from guesses.
+- Pick the diagram type that fits the change: `flowchart` (default: the changed components and how they connect), `sequenceDiagram` (a changed call or request flow), `classDiagram` (changed classes), `erDiagram` (a changed data model).
+- Show only what the PR touches. Mark new, modified and removed items (e.g. with `classDef` styles or a label like `(new)`).
+- Keep it small: about 10 nodes at most, with short labels. Quote labels that have special characters. The syntax must be valid, so the diagram renders.
 
 ### 6. Create the PR
-Create a ready (non-draft) PR. Pass the body via a temp file or `--body` to keep formatting intact:
+Create a ready (non-draft) PR. Write the body to a temp file (e.g. from `mktemp`) and pass it with `--body-file`. Do not use `--body "<body>"`: the body has a code fence, and backticks break inside a shell double-quoted string.
 ```bash
-gh pr create --base <base> --head <current> --title "<title>" --body "<body>"
+gh pr create --base <base> --head <current> --title "<title>" --body-file <file>
 ```
 Then print the returned PR URL to the user.
 

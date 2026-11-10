@@ -22,9 +22,9 @@ The user-level directory is organized as follows:
 
 ```text
 memory/
-├── communication.md             # response style and communication
-├── reasoning.md                 # reasoning preferences
-├── research.md                  # research and verification
+├── communication.md             # response style and communication to use
+├── reasoning.md                 # reasoning preferences to use
+├── research.md                  # preferences for research and verification
 ├── conventions/
 │   ├── general.md               # general conventions
 │   ├── code_comments.md         # comment style
@@ -48,3 +48,6 @@ Add relevant information and learnings to the appropriate user-level or
 project-level memory files.
 
 Do not duplicate memory contents in `CLAUDE.md` or `AGENTS.md`.
+
+## Communication
+@memory/communication.md

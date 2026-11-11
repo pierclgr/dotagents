@@ -38,5 +38,12 @@ Sections, each with a `##` header, in this order (skip empty ones, except Diagra
 #### Diagram
 - A ` ```mermaid ` block built from the branch's real diff (`git diff <base>...HEAD`)
 - Type that fits the change: `flowchart` (default), `sequenceDiagram` (call flow), `classDiagram` (classes), `erDiagram` (data model)
+- For a `classDiagram`, use the UML relations, each arrow with a short label that names the call or the role:
+  - `<|--` inheritance: a class subclasses another
+  - `..|>` realization: a class implements an abstract base or interface
+  - `*--` composition: a class creates and owns the other
+  - `o--` aggregation: a class holds a shared object that it did not create
+  - `-->` association: a class keeps the other in a field and calls it
+  - `..>` dependency: a class uses or creates the other only inside a method
 - New, modified and removed items marked (e.g. `classDef` or `(new)`)
 - At most ~10 nodes with short labels; quote special characters so it renders

@@ -28,7 +28,7 @@
 - `title` is a short and compact summarizing title
 
 #### Description
-Keep every section **short and concise**, with no filler or repetition. Describe only the branch's own changes (`git log --first-parent --no-merges <base>..HEAD`), not those of merged branches like `main`, which had their own PR. Write each paragraph or bullet on one line, without wrapping.
+Keep every section **short and concise**, with no filler or repetition. In every section, describe only what the PR touches: the branch's own changes (`git log --first-parent --no-merges <base>..HEAD`), not those of merged branches like `main`, which had their own PR. Write each paragraph or bullet on one line, without wrapping.
 
 Sections, each with a `##` header, in this order (skip empty ones, except Diagram):
 - **Motivation**: why the PR exists, in one or two sentences
@@ -38,5 +38,5 @@ Sections, each with a `##` header, in this order (skip empty ones, except Diagra
 #### Diagram
 - A ` ```mermaid ` block built from the branch's real diff (`git diff <base>...HEAD`)
 - Type that fits the change: `flowchart` (default), `sequenceDiagram` (call flow), `classDiagram` (classes), `erDiagram` (data model)
-- Only what the PR touches, with new, modified and removed items marked (e.g. `classDef` or `(new)`)
+- New, modified and removed items marked (e.g. `classDef` or `(new)`)
 - At most ~10 nodes with short labels; quote special characters so it renders

@@ -28,10 +28,15 @@
 - `title` is a short and compact summarizing title
 
 #### Description
-Structure the description in the following sections, each titled with a proper markdown header (e.g. `## Motivation`). Skip any section with no change:
-- **Motivation**: the motivation behind the PR
-- **Code**: list of modifications made to the code
-- **Tests**: list of modifications made to tests
-- **Documentation**: list of modifications made to the documentation
+Keep every section **short and concise**, with no filler or repetition. Describe only the branch's own changes (`git log --first-parent --no-merges <base>..HEAD`), not those of merged branches like `main`, which had their own PR. Write each paragraph or bullet on one line, without wrapping.
 
-A PR description must be clear but also concise and readable, not too long. Do *not* wrap lines at a column limit: write each paragraph and each bullet on a single line, full length.
+Sections, each with a `##` header, in this order (skip empty ones, except Diagram):
+- **Motivation**: why the PR exists, in one or two sentences
+- **Diagram**: a mermaid diagram of the change (see below)
+- **Code**, **Tests**, **Documentation**: one bullet per changed or added file, as `` `path/to/file`: description ``, smallest change (lines changed) first. Describe the idea in plain language, not the code edits: "Person now includes age computation and a new year field", not "Person class got a new method for computing the age"
+
+#### Diagram
+- A ` ```mermaid ` block built from the branch's real diff (`git diff <base>...HEAD`)
+- Type that fits the change: `flowchart` (default), `sequenceDiagram` (call flow), `classDiagram` (classes), `erDiagram` (data model)
+- Only what the PR touches, with new, modified and removed items marked (e.g. `classDef` or `(new)`)
+- At most ~10 nodes with short labels; quote special characters so it renders

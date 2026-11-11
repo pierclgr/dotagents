@@ -42,24 +42,16 @@ Run these steps in order. Stop and report if a precondition fails.
 - Push automatically (the user opted into this): `git push -u origin HEAD`. This is safe and expected; no need to ask first.
 
 ### 5. Write title and body per conventions
-Read the user's conventions and follow the **Pull requests** section:
+Read the user's conventions and follow their **Pull requests** section, which sets the PR title, the description sections and the mermaid diagram:
 ```bash
 cat ~/.agents/memory/conventions/tools/git.md
 ```
-Apply whatever the file specifies for PR **title** and **description**. If the file is missing, or has no PR-specific rules, use the default format below. In both cases, also add the mermaid diagram described below.
 
-To pick a title prefix / tone, use the commits (`git log <base>..HEAD`) and the branch name (e.g. `feature/*`, `fix/*`) as signals for whether this is a feature or a fix.
+To pick the title type, use the branch's own commits and the branch name (e.g. `feature/*`, `fix/*`) as signals for whether this is a feature or a fix.
 
-**Default format** (only when conventions don't specify one):
+**Fallback format** (only when the file is missing, or has no PR rules):
 - Title: a short, imperative summary of the change.
-- Body: a one-line headline of what the change does, then the mermaid diagram, then a bulleted list of the concrete changes. No test plan. No mention of AI/coding agents.
-
-**Mermaid diagram** (always, on top of the conventions or the default format):
-- Put it in its own `## Diagram` section, after the Motivation section and before the Code section, inside a ` ```mermaid ` code block (GitHub renders it).
-- Build it from the real diff (`git diff <base>...HEAD --stat` and the changed code), not from guesses.
-- Pick the diagram type that fits the change: `flowchart` (default: the changed components and how they connect), `sequenceDiagram` (a changed call or request flow), `classDiagram` (changed classes), `erDiagram` (a changed data model).
-- Show only what the PR touches. Mark new, modified and removed items (e.g. with `classDef` styles or a label like `(new)`).
-- Keep it small: about 10 nodes at most, with short labels. Quote labels that have special characters. The syntax must be valid, so the diagram renders.
+- Body: a one-line headline of what the change does, then a small mermaid diagram of the change in a ` ```mermaid ` code block, then a bulleted list of the concrete changes. No test plan. No mention of AI/coding agents.
 
 ### 6. Create the PR
 Create a ready (non-draft) PR. Write the body to a temp file (e.g. from `mktemp`) and pass it with `--body-file`. Do not use `--body "<body>"`: the body has a code fence, and backticks break inside a shell double-quoted string.

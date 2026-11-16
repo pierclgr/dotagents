@@ -45,5 +45,10 @@ Sections, each with a `##` header, in this order (skip empty ones, except Diagra
   - `o--` aggregation: a class holds a shared object that it did not create
   - `-->` association: a class keeps the other in a field and calls it
   - `..>` dependency: a class uses or creates the other only inside a method
-- New, modified and removed items marked (e.g. `classDef` or `(new)`)
+- Mark each item's status with a stereotype and a color, with black text (`color:#000`) so it reads in light and dark mode:
+  - new: `<<NEW>>`, green: `style X fill:#c8e6c9,stroke:#2e7d32,color:#000`
+  - modified: `<<CHANGED>>`, yellow: `style X fill:#fff9c4,stroke:#f9a825,color:#000`
+  - deleted: `<<REMOVED>>`, red: `style X fill:#ffcdd2,stroke:#c62828,color:#000`
+  - only moved: `<<MOVED>>`, blue: `style X fill:#bbdefb,stroke:#1565c0,color:#000`; moved and modified is yellow (`<<CHANGED>>`)
+  - unchanged: no stereotype, no style
 - At most ~10 nodes with short labels; quote special characters so it renders

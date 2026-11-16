@@ -17,6 +17,29 @@ When writing a plan, include:
      - `o--` aggregation: a class holds a shared object that it did not create.
      - `-->` association: a class keeps the other in a field and calls it.
      - `..>` dependency: a class uses or creates the other only inside a method.
+   - in a change to existing code, give each class in the diagram a status
+     stereotype and a color. Always use black text (`color:#000`), so the
+     text is easy to read:
+
+     | Status | Stereotype | Style |
+     |---|---|---|
+     | new | `<<NEW>>` | `fill:#c8e6c9,stroke:#2e7d32,color:#000` (green) |
+     | moved or renamed | `<<MOVED>>` / `<<MOVED_RENAMED>>` | `fill:#bbdefb,stroke:#1565c0,color:#000` (blue) |
+     | changed | `<<CHANGED>>` | `fill:#ffe0b2,stroke:#ef6c00,color:#000` (orange) |
+     | unchanged | none | no style |
+
+     Example:
+     ```mermaid
+     classDiagram
+         Base <|-- Child : subclasses
+         <<NEW>> Child
+         <<CHANGED>> Base
+         style Child fill:#c8e6c9,stroke:#2e7d32,color:#000
+         style Base fill:#ffe0b2,stroke:#ef6c00,color:#000
+     ```
+     Below the diagram, add a table with the classes of each status. List
+     removed classes and changed classes that are not in the diagram as
+     text below the table.
    - a blueprint of each class: fields and method signatures, with no
      implementation. Each class, field, method and has a short 
      description of what it holds or does. Example:

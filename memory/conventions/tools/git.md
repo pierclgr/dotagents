@@ -48,7 +48,7 @@ Sections, each with a `##` header, in this order (skip empty ones, except Diagra
 - Mark each item's status with a stereotype and a color, with black text (`color:#000`) so it reads in light and dark mode:
   - new: `<<NEW>>`, green: `style X fill:#c8e6c9,stroke:#2e7d32,color:#000`
   - modified: `<<CHANGED>>`, yellow: `style X fill:#fff9c4,stroke:#f9a825,color:#000`
-  - deleted: `<<REMOVED>>`, red: `style X fill:#ffcdd2,stroke:#c62828,color:#000`
   - only moved: `<<MOVED>>`, blue: `style X fill:#bbdefb,stroke:#1565c0,color:#000`; moved and modified is yellow (`<<CHANGED>>`)
   - unchanged: no stereotype, no style
+  - removed: do not show
 - At most ~10 nodes with short labels; quote special characters so it renders

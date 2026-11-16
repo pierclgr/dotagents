@@ -38,8 +38,8 @@ When writing a plan, include:
          style Base fill:#ffe0b2,stroke:#ef6c00,color:#000
      ```
      Below the diagram, add a table with the classes of each status. List
-     removed classes and changed classes that are not in the diagram as
-     text below the table.
+     changed classes that are not in the diagram as text below the table.
+     Do not show removed classes.
    - a blueprint of each class: fields and method signatures, with no
      implementation. Each class, field, method and has a short 
      description of what it holds or does. Example:
@@ -54,8 +54,8 @@ When writing a plan, include:
          def age(self) -> int: ...  # age in years, computed from birth
      ```
    - in a change to existing code, the blueprint shows only what changes:
-     new, changed and removed fields and methods, each marked `# NEW`,
-     `# CHANGED` or `# REMOVED`. Leave out unchanged members. For a class
+     new and changed fields and methods, each marked `# NEW` or
+     `# CHANGED`. Leave out unchanged and removed members. For a class
      that only moves to another file, write the move in one line, with no
      blueprint.
 2. **Pseudocode**: pseudocode of the implementation, especially of the biggest methods, functions and code slices

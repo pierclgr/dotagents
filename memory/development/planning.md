@@ -8,7 +8,12 @@
 - If unclear, stop. Name what's confusing. Ask.
 
 When writing a plan, include:
-1. **Class architecture blueprint**:
+
+1. **Verifiable goals**: break the specs agreed with the user into concrete
+   outcomes. For each goal, state what must be achieved and how to verify it.
+   These goals guide implementation iterations and are separate from test
+   cases. Review the goals with the user as part of the plan.
+2. **Class architecture blueprint**:
    - a Mermaid class diagram of the classes and their relations. Use the UML
      relations, each arrow with a short label that names the call or the role:
      - `<|--` inheritance: a class subclasses another.
@@ -58,4 +63,4 @@ When writing a plan, include:
      `# CHANGED`. Leave out unchanged and removed members. For a class
      that only moves to another file, write the move in one line, with no
      blueprint.
-2. **Pseudocode**: pseudocode of the implementation, especially of the biggest methods, functions and code slices
+3. **Pseudocode**: pseudocode of the implementation, especially of the biggest methods, functions and code slices

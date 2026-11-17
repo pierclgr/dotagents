@@ -49,20 +49,6 @@ cat ~/.agents/memory/conventions/tools/git.md
 
 To pick the title type, use the branch's own commits and the branch name (e.g. `feature/*`, `fix/*`) as signals for whether this is a feature or a fix.
 
-**Files changelog** (always, with the conventions or the fallback format): put every per-file section (Code, Tests, Documentation, Configs) at the end of the body, inside one collapsible section titled "Files changelog". Each section becomes a `###` header inside it. Keep a blank line after `</summary>` and before `</details>`, or GitHub does not render the Markdown inside:
-```markdown
-<details>
-<summary>Files changelog</summary>
-
-### Code
-- `path/to/file`: description
-
-### Tests
-- `tests/path/to/test_file.py`: description
-
-</details>
-```
-
 **Fallback format** (only when the file is missing, or has no PR rules):
 - Title: a short, imperative summary of the change.
 - Body: a one-line headline of what the change does, then a small mermaid diagram of the change in a ` ```mermaid ` code block, then a bulleted list of the concrete changes. No test plan. No mention of AI/coding agents.

@@ -33,7 +33,23 @@ Keep every section **short and concise**, with no filler or repetition. In every
 Sections, each with a `##` header, in this order (skip empty ones, except Diagram):
 - **Motivation**: why the PR exists, in one or two sentences
 - **Diagram**: a mermaid diagram of the change (see below)
-- **Code**, **Tests**, **Documentation**: one bullet per changed or added file, as `` `path/to/file`: description ``, smallest change (lines changed) first. Describe the idea in plain language, not the code edits: "Person now includes age computation and a new year field", not "Person class got a new method for computing the age"
+- **Files changelog**: a collapsible section at the end of the body (format below), with the sections **Code**, **Tests**, **Documentation** and **Configs** (skip empty ones), each with one bullet per changed or added file, as `` `path/to/file`: description ``, smallest change (lines changed) first. Describe the idea in plain language, not the code edits: "Person now includes age computation and a new year field", not "Person class got a new method for computing the age"
+
+#### Files changelog
+- Put the **Code**, **Tests**, **Documentation** and **Configs** sections at the end of the body, inside one collapsible `<details>` titled "Files changelog"; each section is a `###` header inside it
+- Keep a blank line after `</summary>` and before `</details>`, or GitHub does not render the Markdown inside:
+```markdown
+<details>
+<summary>Files changelog</summary>
+
+### Code
+- `path/to/file`: description
+
+### Tests
+- `tests/path/to/test_file.py`: description
+
+</details>
+```
 
 #### Diagram
 - A ` ```mermaid ` block built from the branch's real diff (`git diff <base>...HEAD`)

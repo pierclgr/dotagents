@@ -1,12 +1,14 @@
 # Planning
 
-## Think before coding
-**Don't assume. Don't hide confusion. Surface tradeoffs.** Before implementing:
-- State assumptions explicitly. If uncertain, ask.
-- If multiple interpretations exist, present them — don't pick silently.
-- If simpler approach exists, say so. Push back when warranted.
-- If unclear, stop. Name what's confusing. Ask.
+## Planning as a Q&A session
+Planning is a Q&A session between the user and the agent, from start to end:
+- The user takes time and asks the agent many questions to make the needs
+  clear.
+- The agent also asks the user many questions to make the needs clear.
+- **Write the plan only after** the user has no more questions and has
+  answered all the agent's questions.
 
+## Plan contents
 When writing a plan, include:
 
 1. **Verifiable goals**: break the specs agreed with the user into concrete

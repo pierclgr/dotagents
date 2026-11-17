@@ -1,6 +1,17 @@
 # Documentation preferences
 
-### 1. Keep documentation up-to-date
+### 1. Code as documentation
+Use a **code as documentation** approach. The code is the source of truth and
+the main documentation of the codebase.
+
+Still keep documentation files (`README.md`, `AGENTS.md`, `CLAUDE.md`,
+`memory/` files, repo docs, etc.). Make them **extremely concise and
+minimal**. Put in them only:
+- Information for the humans who operate the code (tutorials, guides, brief
+  explanations).
+- Information that is not clear from the code.
+
+### 2. Keep documentation up-to-date
 When making code changes, make sure to **keep documentation up-to-date**:
 - Update docstrings.
 - Update existing comments, if any.
@@ -11,7 +22,7 @@ When making code changes, make sure to **keep documentation up-to-date**:
 - Make changes to the documentation, `CLAUDE.md`/`AGENTS.md` and `memory/`.
 files only if necessary and relevant, and keep changes concise.
 
-### 2. Instructions and memory
+### 3. Instructions and memory
 Keep project conventions and learnings in the project's `memory/` directory.
 Use the user-level `memory/` directory for user preferences and learnings.
 Keep project-specific instructions in project-level `CLAUDE.md` or `AGENTS.md`.

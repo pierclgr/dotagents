@@ -22,6 +22,7 @@ The user-level directory is organized as follows:
 
 ```text
 memory/
+├── behavior.md                  # general behavior to follow in every task
 ├── communication.md             # response style and communication to use
 ├── reasoning.md                 # reasoning preferences to use
 ├── research.md                  # preferences for research and verification
@@ -49,5 +50,14 @@ project-level memory files.
 
 Do not duplicate memory contents in `CLAUDE.md` or `AGENTS.md`.
 
+## Behavior
+@memory/behavior.md
+
 ## Communication
 @memory/communication.md
+
+## Reasoning
+@memory/reasoning.md
+
+## Research
+@memory/research.md

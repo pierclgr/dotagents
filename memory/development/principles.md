@@ -21,6 +21,11 @@
 - No extra features besides the one requested.
 - No "flexibility" or "configurability" unless requested.
 - No "dead" methods that are unused by current requests, write only what we need.
+- No error handling for impossible scenarios.
+- If you write 200 lines and it could be 50, rewrite it.
+
+Ask yourself: "Would a senior engineer say this is overcomplicated?" If yes,
+simplify.
 
 ## Readability
 **Maintain human-readable code.** Prefer instructions split on multiple lines over one-line instructions.
@@ -34,9 +39,12 @@
 When editing existing code:
 - Don't "improve" adjacent code, comments, or formatting.
 - Don't refactor/rewrite things that aren't broken. If you see a better way, mention it instead.
+- Match existing style, even if you'd do it differently.
 - If you notice unrelated dead code, mention but don't delete.
 
 On orphans from your changes: remove imports/vars/functions YOUR changes made unused. Leave pre-existing dead code alone.
+
+The test: every changed line traces directly to the user's request.
 
 ## Granular edits
 Prefer smaller granular edits over big ones. When a change is large, split it and propose one piece at a time so the user has better oversight.

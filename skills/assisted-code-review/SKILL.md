@@ -65,10 +65,12 @@ it. Leave already staged deletions unchanged. Keep deleted files in the overview
 table, marked as staged, but exclude them from the review queue and review count.
 For PR or branch targets, review deletions as usual and do not stage them.
 
-Build the final order in three blocks:
-1. **Code, top-down.** The reversed `python` list, then the code files in other languages from `other` (JS/TS, Go, Rust, Java, shell, SQL, ...). For those, read the imports yourself and apply the same rule: a file comes before every changed file it imports, directly or through unchanged files; files in a cycle stay together; ties go by path.
+Build the final order in five blocks. Tests and documentation always come after all source code, even when the import order puts them first:
+1. **Source code, top-down.** The reversed `python` list, then the code files in other languages from `other` (JS/TS, Go, Rust, Java, shell, SQL, ...), without test files. For those other languages, read the imports yourself and apply the same rule: a file comes before every changed file it imports, directly or through unchanged files; files in a cycle stay together; ties go by path.
 2. **Deleted files**, from `deleted` (PR or branch targets only).
-3. **Non-code files** from `other`: docs, configs, data, lock files, etc.
+3. **Tests, top-down.** Test files taken out of block 1, in the same top-down order, followed by their non-code fixtures (e.g. YAML or JSON data under a test folder). A test file is a file in a `tests/`, `test/` or `__tests__/` folder, or a file named like `test_*`, `*_test.*`, `*.test.*`, `*.spec.*` or `conftest.py`.
+4. **Documentation**: `*.md`, `*.rst` and files in a `docs/` folder (README, AGENTS.md, CLAUDE.md, guides, ...).
+5. **Other non-code files** from `other`: configs, data, lock files, etc.
 
 ## 3. Show the table
 
